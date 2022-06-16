@@ -74,6 +74,7 @@ function RegisterPage(props) {
 
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
+              window.alert("회원가입이 완료되었습니다.");
               props.history.push("/login");
             } else {
               alert(response.payload.err.errmsg)

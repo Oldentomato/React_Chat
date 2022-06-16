@@ -10,5 +10,6 @@ dev.js
 npm-debug.log*
 yarn-debug.kog*
 yarn-error.log*
+localtunnel.txt
 
 .vscode
