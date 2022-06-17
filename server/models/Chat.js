@@ -9,6 +9,10 @@ const chatSchema = mongoose.Schema({
         type: Schema.Types.ObjectId,
        ref: 'User'
     },
+    room_id:{
+        type: Schema.Types.ObjectId,
+        ref: 'ChatRooms'
+    },
     type : {
         type: String
     },

@@ -1,6 +1,7 @@
 import {
     GET_CHATS,
-    AFTER_POST_MESSAGE
+    AFTER_POST_MESSAGE,
+    GET_ROOMS
 } from '../_actions/types';
  
 
@@ -10,6 +11,8 @@ export default function(state={},action){
             return {...state, chats: action.payload }
         case AFTER_POST_MESSAGE:
             return {...state, chats: state.chats.concat(action.payload)}
+        case GET_ROOMS:
+            return {...state, rooms: action.payload}
         default:
             return state;
     }

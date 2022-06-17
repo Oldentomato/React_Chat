@@ -13,6 +13,12 @@ function ChatCard(props) {
                 />
             }
             content={
+                props.message.substring(0,8) === "uploads/" ?
+                
+
+                <img style={{maxWidth: '200px'}}
+                 src={`http://localhost:5000/${props.message}`} alt="image"/>
+                :
                 <p>
                     {props.message}
                 </p>

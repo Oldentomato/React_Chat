@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
+const Schema = mongoose.Schema;
 
 const userSchema = mongoose.Schema({
     name: {
@@ -21,6 +22,10 @@ const userSchema = mongoose.Schema({
         type:String,
         maxlength: 50
     },
+    chatlist:[{
+        type: Schema.Types.ObjectId,
+        ref: 'ChatRooms'
+    }],
     role : {
         type:Number,
         default: 0 

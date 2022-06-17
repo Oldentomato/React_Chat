@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
+
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const config = require("./config/key");
@@ -20,6 +21,9 @@ const { Chat } = require("./models/Chat");
 
 app.use('/api/users', require('./routes/users'));
 app.use('/api/chat', require('./routes/chat'));
+app.use('/api/upload',require('./routes/uploads'));
+
+
 
 io.on("connection", socket => {
 
