@@ -22,10 +22,6 @@ const userSchema = mongoose.Schema({
         type:String,
         maxlength: 50
     },
-    chatlist:[{
-        type: Schema.Types.ObjectId,
-        ref: 'ChatRooms'
-    }],
     role : {
         type:Number,
         default: 0 

@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const path = require('path')
 
 
 const server = require("http").createServer(app);
@@ -73,3 +74,18 @@ const port = process.env.PORT || 5000
 server.listen(port, () => {
   console.log(`Server Running at ${port}`)
 });
+
+// app.use(express.static(path.join(__dirname, '../client/build')));
+
+// app.get('/',function(res,res){
+//     res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// })
+// app.get('/chat',function(res,res){
+//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// })
+// app.get('/login',function(res,res){
+//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// })
+// app.get('/register',function(res,res){
+//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// })

@@ -13,8 +13,7 @@ const chatRoomsSchema = Schema({
         type: String
     },
     user_list:[{
-        type: Schema.Types.ObjectId,
-        ref: "User"
+        user_id: ""
     }]
 })
 

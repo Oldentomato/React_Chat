@@ -11,15 +11,18 @@ function LeftMenu(props) {
   const dispatch = useDispatch();
   const [user,setuser] = useState("");
   const [rooms, setrooms] = useState([]);
-  const Chat_Rooms = () =>{
 
-  }
+  const Chat_Rooms = rooms.map((file,index)=>{
+    return(
+      <Menu.Item key="setting:2"><a href={`/chat/${file._id}`}>{file.room_name}</a></Menu.Item>
+    )
+  })
 
   const Create_Room = () =>{
     let room_data={
       user_max_num : 5,
       room_name: 'Test_Room',
-      user_list: user
+      user_Id: user
     }
     axios.post('/api/chat/createRoom',room_data)
     .then(response=>{
@@ -37,15 +40,14 @@ function LeftMenu(props) {
     dispatch(auth()).then(response=>{
       setuser(response.payload._id)
     })
-    let request = {
+    let data = {
       userId: user
     };
-    // dispatch(getRooms(request)).then(response=>{
-    //   if(response.payload.success){
-    //     console.log(response.payload);
-    //     setrooms(response.payload.rooms)
-    //   }
-    // })
+    dispatch(getRooms(data)).then(response=>{
+      if(response.payload.success){
+        setrooms(response.payload.rooms)
+      }
+    })
     
 
     
@@ -62,7 +64,7 @@ function LeftMenu(props) {
     <SubMenu title={<span>Chat</span>}>
       <MenuItemGroup title="Start Chat">
         <Menu.Item key="setting:1"><a onClick={Create_Room}>Create_Channel</a></Menu.Item>
-        <Menu.Item key="setting:2"><a href={"/chat"}> Room1</a></Menu.Item>
+        {Chat_Rooms}
       </MenuItemGroup>
     </SubMenu>
   </Menu>
