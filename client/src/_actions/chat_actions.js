@@ -6,8 +6,8 @@ import {
 } from './types';
 import { CHAT_SERVER } from '../components/Config.js';
 
-export function getChats(){
-    const request = axios.get(`${CHAT_SERVER}/getChats`)
+export function getChats(data){
+    const request = axios.post(`${CHAT_SERVER}/getChats`,data)
         .then(response => response.data);
     
     return {

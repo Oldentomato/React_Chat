@@ -32,7 +32,7 @@ io.on("connection", socket => {
 
     connect.then(db => {
       try {
-          let chat = new Chat({ message: msg.chatMessage, sender: msg.userId, type: msg.type })
+          let chat = new Chat({ message: msg.chatMessage, sender: msg.userId,room_id:msg.roomId, type: msg.type })
 
           chat.save((err, doc) => {
             if(err) return res.json({ success: false, err })

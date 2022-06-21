@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import {getRooms} from "../../../../_actions/chat_actions"
 import {auth} from "../../../../_actions/user_actions"
 import { Menu } from 'antd';
-import {useSelector,useDispatch} from "react-redux";
+import {useDispatch} from "react-redux";
 import axios from 'axios'
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -14,7 +14,7 @@ function LeftMenu(props) {
 
   const Chat_Rooms = rooms.map((file,index)=>{
     return(
-      <Menu.Item key="setting:2"><a href={`/chat/${file._id}`}>{file.room_name}</a></Menu.Item>
+      <Menu.Item key={"room_"+index}><a href={`/chat/${file._id}`}>{file.room_name}</a></Menu.Item>
     )
   })
 
@@ -36,13 +36,14 @@ function LeftMenu(props) {
   }
 
   useEffect(()=>{
-    
     dispatch(auth()).then(response=>{
       setuser(response.payload._id)
     })
+    
     let data = {
       userId: user
     };
+    
     dispatch(getRooms(data)).then(response=>{
       if(response.payload.success){
         setrooms(response.payload.rooms)
@@ -50,7 +51,6 @@ function LeftMenu(props) {
     })
     
 
-    
   },[user])
 
   return (
